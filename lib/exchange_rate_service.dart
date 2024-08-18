@@ -72,6 +72,30 @@ class ExchangeRateService with FormatterMixin {
       currentRate: currentRate,
     );
   }
+
+  String formatExchangeRateStatistics(ExchangeRateStatistics statistics) {
+    return '''
+    Value at Start of Year:
+    Currency: ${statistics.startOfYearRate.currency}
+    Date: ${formatDate(statistics.startOfYearRate.date)}
+    Rate: ${formatRate(statistics.startOfYearRate.rate)}
+
+    Lowest Value:
+    Currency: ${statistics.minRate.currency}
+    Date: ${formatDate(statistics.minRate.date)}
+    Rate: ${formatRate(statistics.minRate.rate)}
+
+    Highest Value:
+    Currency: ${statistics.maxRate.currency}
+    Date: ${formatDate(statistics.maxRate.date)}
+    Rate: ${formatRate(statistics.maxRate.rate)}
+
+    Current Value:
+    Currency: ${statistics.currentRate.currency}
+    Date: ${formatDate(statistics.currentRate.date)}
+    Rate: ${formatRate(statistics.currentRate.rate)}
+    ''';
+  }
 }
 
 class ExchangeRateStatistics {
